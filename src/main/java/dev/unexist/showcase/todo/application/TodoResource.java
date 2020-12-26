@@ -1,5 +1,5 @@
 /**
- * @package Quarkus-Kind-MP-Showcase
+ * @package Quarkus-DDD-Showcase
  *
  * @file Todo resource
  * @copyright 2020 Christoph Kappel <christoph@unexist.dev>
@@ -13,6 +13,7 @@ package dev.unexist.showcase.todo.application;
 
 import dev.unexist.showcase.todo.domain.todo.Todo;
 import dev.unexist.showcase.todo.domain.todo.TodoBase;
+import dev.unexist.showcase.todo.domain.todo.TodoId;
 import dev.unexist.showcase.todo.domain.todo.TodoService;
 import dev.unexist.showcase.todo.infrastructure.stereotypes.ApplicationService;
 import org.eclipse.microprofile.openapi.annotations.Operation;
@@ -102,8 +103,8 @@ public class TodoResource {
             @APIResponse(responseCode = "404", description = "Todo not found"),
             @APIResponse(responseCode = "500", description = "Server error")
     })
-    public Response getAll(@PathParam("id") int id) {
-        Optional<Todo> result = this.todoService.findById(id);
+    public Response getById(@PathParam("id") String id) {
+        Optional<Todo> result = this.todoService.findById(new TodoId(id));
 
         Response.ResponseBuilder response;
 
@@ -127,10 +128,10 @@ public class TodoResource {
             @APIResponse(responseCode = "404", description = "Todo not found"),
             @APIResponse(responseCode = "500", description = "Server error")
     })
-    public Response update(@PathParam("id") int id, TodoBase base) {
+    public Response updateById(@PathParam("id") String id, TodoBase base) {
         Response.ResponseBuilder response;
 
-        if (this.todoService.update(id, base)) {
+        if (this.todoService.update(new TodoId(id), base)) {
             response = Response.noContent();
         } else {
             response = Response.status(Response.Status.NOT_FOUND);
@@ -145,10 +146,10 @@ public class TodoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Delete todo by id")
     @Tag(name = "Todo")
-    public Response delete(@PathParam("id") int id, TodoBase base) {
+    public Response delete(@PathParam("id") String id) {
         Response.ResponseBuilder response;
 
-        if (this.todoService.delete(id)) {
+        if (this.todoService.deleteById(new TodoId(id))) {
             response = Response.noContent();
         } else {
             response = Response.status(Response.Status.NOT_FOUND);

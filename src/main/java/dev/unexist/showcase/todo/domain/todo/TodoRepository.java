@@ -1,5 +1,5 @@
 /**
- * @package Quarkus-Kind-MP-Showcase
+ * @package Quarkus-DDD-Showcase
  *
  * @file Todo repository
  * @copyright 2020 Christoph Kappel <christoph@unexist.dev>
@@ -12,8 +12,6 @@
 package dev.unexist.showcase.todo.domain.todo;
 
 import dev.unexist.showcase.todo.infrastructure.stereotypes.Repository;
-import org.eclipse.microprofile.metrics.MetricUnits;
-import org.eclipse.microprofile.metrics.annotation.Gauge;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
+import java.util.stream.IntStream;
 
 @Repository
 @ApplicationScoped
@@ -38,6 +38,11 @@ public class TodoRepository {
         this.list = new ArrayList<>();
     }
 
+    public TodoId nextId() {
+        return new TodoId(
+                UUID.randomUUID().toString().toUpperCase());
+    }
+
     /**
      * Add {@link Todo} entry to list
      *
@@ -48,8 +53,6 @@ public class TodoRepository {
      **/
 
     public boolean add(final Todo todo) {
-        todo.setId(this.list.size() + 1);
-
         return this.list.add(todo);
     }
 
@@ -64,13 +67,12 @@ public class TodoRepository {
 
     public boolean update(final Todo todo) {
         boolean ret = false;
+        int idx = this.findIndexById(todo.getId());
 
-        try {
-            this.list.set(todo.getId(), todo);
+        if (-1 != idx) {
+            this.list.set(idx, todo);
 
             ret = true;
-        } catch (IndexOutOfBoundsException e) {
-            LOGGER.warn("update: id={} not found", todo.getId());
         }
 
         return ret;
@@ -80,20 +82,19 @@ public class TodoRepository {
      * Delete {@link Todo} with given id
      *
      * @param id
-     *          A id to delete
+     *          A {@TodoId} to delete
      * @return
      *          Either {@code true} on success; otherwise {@code false}
      **/
 
-    public boolean deleteById(int id) {
+    public boolean deleteById(TodoId id) {
         boolean ret = false;
+        int idx = this.findIndexById(id);
 
-        try {
-            this.list.remove(id);
+        if (-1 != idx) {
+            this.list.remove(idx);
 
             ret = true;
-        } catch (IndexOutOfBoundsException e) {
-            LOGGER.warn("update: id={} not found", id);
         }
 
         return ret;
@@ -113,19 +114,30 @@ public class TodoRepository {
      * Find {@link Todo} by given id
      *
      * @param id
-     *          Id to find
+     *          A {@TodoId} to find
      * @return
      *          A {@link Optional} with the result of the lookup
      **/
 
-    public Optional<Todo> findById(int id) {
+    public Optional<Todo> findById(TodoId id) {
         return this.list.stream()
-                .filter(t -> t.getId() == id)
+                .filter(t -> t.getId().equals(id))
                 .findFirst();
     }
 
-    @Gauge(name = "numTodos", unit = MetricUnits.NONE, description = "Number of todos")
-    public int numTodos() {
-        return this.list.size();
+    /**
+     * Find index of {@link Todo} by given id
+     *
+     * @param id
+     *          A {@TodoId} to find
+     * @return
+     *          Either found index on success; otherwise {@code -1}
+     **/
+
+    private int findIndexById(TodoId id) {
+        return IntStream.range(0, this.list.size())
+                .filter(idx  -> id.equals(this.list.get(idx).getId()))
+                .findFirst()
+                .orElse(-1);
     }
 }

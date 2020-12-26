@@ -1,5 +1,5 @@
 /**
- * @package Quarkus-Kind-MP-Showcase
+ * @package Quarkus-DDD-Showcase
  *
  * @file Todo application
  * @copyright 2020 Christoph Kappel <christoph@unexist.dev>

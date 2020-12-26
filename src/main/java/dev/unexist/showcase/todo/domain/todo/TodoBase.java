@@ -1,5 +1,5 @@
 /**
- * @package Quarkus-Kind-MP-Showcase
+ * @package Quarkus-DDD-Showcase
  *
  * @file Todo base class
  * @copyright 2020 Christoph Kappel <christoph@unexist.dev>
@@ -11,7 +11,7 @@
 
 package dev.unexist.showcase.todo.domain.todo;
 
-import javax.validation.constraints.NotNull;
+import io.smallrye.common.constraint.NotNull;
 
 public class TodoBase {
 

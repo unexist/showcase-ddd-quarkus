@@ -1,5 +1,5 @@
 /**
- * @package Quarkus-Kind-MP-Showcase
+ * @package Quarkus-DDD-Showcase
  *
  * @file Todo class and aggregate root
  * @copyright 2020 Christoph Kappel <christoph@unexist.dev>
@@ -12,15 +12,14 @@
 package dev.unexist.showcase.todo.domain.todo;
 
 import dev.unexist.showcase.todo.infrastructure.stereotypes.Aggregate;
+import dev.unexist.showcase.todo.infrastructure.stereotypes.AggregateId;
 
 @Aggregate
 public class Todo extends TodoBase {
-    private int id;
+    private TodoId id;
 
-    public Todo() {
-    }
-
-    public Todo(final TodoBase base) {
+    public Todo(final TodoId id, final TodoBase base) {
+        this.setId(id);
         this.update(base);
     }
 
@@ -31,11 +30,16 @@ public class Todo extends TodoBase {
         this.setDone(base.getDone());
     }
 
-    public int getId() {
+    @AggregateId
+    public TodoId getId() {
         return id;
     }
 
-    public void setId(int id) {
+    protected void setId(final TodoId id) {
+        if (null != id) {
+            throw new IllegalArgumentException("Missing id");
+        }
+
         this.id = id;
     }
 }

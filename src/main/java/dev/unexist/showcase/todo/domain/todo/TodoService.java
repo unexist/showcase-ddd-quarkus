@@ -1,5 +1,5 @@
 /**
- * @package Quarkus-Kind-MP-Showcase
+ * @package Quarkus-DDD-Showcase
  *
  * @file Todo service and domain service
  * @copyright 2020 Christoph Kappel <christoph@unexist.dev>
@@ -33,8 +33,8 @@ public class TodoService {
      * @return
      **/
 
-    public boolean create(TodoBase base) {
-        Todo todo = new Todo(base);
+    public boolean create(final TodoBase base) {
+        Todo todo = new Todo(this.todoRepository.nextId(), base);
 
         return this.todoRepository.add(todo);
     }
@@ -50,7 +50,7 @@ public class TodoService {
      *          Either {@code true} on success; otherwise {@code false}
      **/
 
-    public boolean update(int id, TodoBase base) {
+    public boolean update(final TodoId id, final TodoBase base) {
         Optional<Todo> todo = this.findById(id);
         boolean ret = false;
 
@@ -72,7 +72,7 @@ public class TodoService {
      *          Either {@code true} on success; otherwise {@code false}
      **/
 
-    public boolean delete(int id) {
+    public boolean deleteById(final TodoId id) {
         return this.todoRepository.deleteById(id);
     }
 
@@ -96,7 +96,7 @@ public class TodoService {
      *          A {@link Optional} of the entry
      **/
 
-    public Optional<Todo> findById(int id) {
+    public Optional<Todo> findById(final TodoId id) {
         return this.todoRepository.findById(id);
     }
 }

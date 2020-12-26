@@ -1,5 +1,5 @@
 /**
- * @package Quarkus-jqAssistant-Showcase
+ * @package Quarkus-DDD-Showcase
  *
  * @file Stupid integration test
  * @copyright 2019 Christoph Kappel <unexist@subforge.org>
