@@ -1,0 +1,14 @@
+^/\*\*
+^ \* @package (.*)
+^ \*$
+^ \* @file (.*)
+^ \* @copyright (\d\d\d\d) ([^<]*) <([^@]*)@(.*)>$
+^ \* @version \$Id
+^ \*$
+^ \* This program can be distributed under the terms of the GNU GPLv2.$
+^ \* See the file COPYING for details.$
+^ \*\*/$
+^$
+^package
+^$
+^import
