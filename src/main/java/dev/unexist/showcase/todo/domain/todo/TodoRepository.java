@@ -38,11 +38,6 @@ public class TodoRepository {
         this.list = new ArrayList<>();
     }
 
-    public TodoId nextId() {
-        return new TodoId(
-                UUID.randomUUID().toString().toUpperCase());
-    }
-
     /**
      * Add {@link Todo} entry to list
      *
@@ -87,7 +82,7 @@ public class TodoRepository {
      *          Either {@code true} on success; otherwise {@code false}
      **/
 
-    public boolean deleteById(TodoId id) {
+    public boolean deleteById(final TodoId id) {
         boolean ret = false;
         int idx = this.findIndexById(id);
 
@@ -119,10 +114,22 @@ public class TodoRepository {
      *          A {@link Optional} with the result of the lookup
      **/
 
-    public Optional<Todo> findById(TodoId id) {
+    public Optional<Todo> findById(final TodoId id) {
         return this.list.stream()
                 .filter(t -> t.getId().equals(id))
                 .findFirst();
+    }
+
+    /**
+     * Create a new {@link TodoId}
+     *
+     * @return
+     *          New {@link TodoId}
+     **/
+
+    public TodoId nextId() {
+        return new TodoId(
+                UUID.randomUUID().toString().toUpperCase());
     }
 
     /**
@@ -134,7 +141,7 @@ public class TodoRepository {
      *          Either found index on success; otherwise {@code -1}
      **/
 
-    private int findIndexById(TodoId id) {
+    private int findIndexById(final TodoId id) {
         return IntStream.range(0, this.list.size())
                 .filter(idx  -> id.equals(this.list.get(idx).getId()))
                 .findFirst()
