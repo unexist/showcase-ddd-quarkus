@@ -14,6 +14,15 @@ package dev.unexist.showcase.todo.domain.todo;
 import org.apache.commons.lang3.BooleanUtils;
 
 public class TodoDTOAssembler {
+    /**
+     * Create {@link TodoDTO} from given {@link Todo}
+     *
+     * @param todo
+     *          A source {@ink Todo}
+     * @return
+     *          Newly created {@link TodoDTO}
+     **/
+
     public static TodoDTO fromTodoToDto(final Todo todo) {
         TodoDTO todoDto = new TodoDTO();
 
@@ -27,6 +36,15 @@ public class TodoDTOAssembler {
 
         return todoDto;
     }
+
+    /**
+     * Update given {@link Todo} with data from {@link TodoDTO}
+     *
+     * @param todo
+     *          A {@link Todo} to update
+     * @param todoDto
+     *          A source {@link TodoDTO}
+     **/
 
     public static void updateTodoFromDto(final Todo todo, final TodoDTO todoDto) {
         todo.setDescription(

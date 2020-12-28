@@ -50,7 +50,7 @@ public class Todo {
 
     void setTimeWindow(TimeWindow timeWindow) {
         this.timeWindow = Validate.notNull(timeWindow,
-                "Timewindow msut be set");
+                "Timewindow must be set");
     }
 
     Status getStatus() {
