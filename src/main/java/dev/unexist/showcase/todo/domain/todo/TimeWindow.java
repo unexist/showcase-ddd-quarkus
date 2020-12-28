@@ -1,7 +1,7 @@
 /**
  * @package Quarkus-DDD-Showcase
  *
- * @file DueDate class
+ * @file TimeWindow class
  * @copyright 2020 Christoph Kappel <christoph@unexist.dev>
  * @version $Id$
  *
@@ -12,6 +12,7 @@
 package dev.unexist.showcase.todo.domain.todo;
 
 import dev.unexist.showcase.todo.infrastructure.stereotypes.ValueObject;
+import org.apache.commons.lang3.Validate;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -30,20 +31,20 @@ public class TimeWindow {
         this.setDue(due);
     }
 
-    protected void setStart(LocalDate start) {
-        if (null == start) {
-            throw new IllegalArgumentException("Missing start date");
-        }
+    LocalDate getStart() {
+        return start;
+    }
 
-        this.start = start;
+    protected void setStart(LocalDate start) {
+        this.start = Validate.notNull(start, "Start must be set");
+    }
+
+    LocalDate getDue() {
+        return due;
     }
 
     protected void setDue(LocalDate due) {
-        if (null == due) {
-            throw new IllegalArgumentException("Missing due date");
-        }
-
-        this.due = due;
+        this.due = Validate.notNull(due, "Due must be set");
     }
 
     @Override

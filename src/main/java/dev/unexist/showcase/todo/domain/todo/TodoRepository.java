@@ -62,7 +62,7 @@ public class TodoRepository {
 
     public boolean update(final Todo todo) {
         boolean ret = false;
-        int idx = this.findIndexById(todo.getId());
+        int idx = this.findIndexById(todo.id());
 
         if (-1 != idx) {
             this.list.set(idx, todo);
@@ -116,7 +116,7 @@ public class TodoRepository {
 
     public Optional<Todo> findById(final TodoId id) {
         return this.list.stream()
-                .filter(t -> t.getId().equals(id))
+                .filter(t -> t.id().equals(id))
                 .findFirst();
     }
 
@@ -143,7 +143,7 @@ public class TodoRepository {
 
     private int findIndexById(final TodoId id) {
         return IntStream.range(0, this.list.size())
-                .filter(idx  -> id.equals(this.list.get(idx).getId()))
+                .filter(idx  -> id.equals(this.list.get(idx).id()))
                 .findFirst()
                 .orElse(-1);
     }

@@ -1,7 +1,7 @@
 /**
  * @package Quarkus-DDD-Showcase
  *
- * @file Todo base class
+ * @file TodoDTO class
  * @copyright 2020 Christoph Kappel <christoph@unexist.dev>
  * @version $Id$
  *
@@ -13,7 +13,9 @@ package dev.unexist.showcase.todo.domain.todo;
 
 import io.smallrye.common.constraint.NotNull;
 
-public class TodoBase {
+import java.time.LocalDate;
+
+public class TodoDTO {
 
     @NotNull
     private String title;
@@ -21,10 +23,14 @@ public class TodoBase {
     @NotNull
     private String description;
 
-    private Boolean done;
+    @NotNull
+    private LocalDate start;
 
     @NotNull
-    private TimeWindow timeWindow;
+    private LocalDate due;
+
+    @NotNull
+    private Boolean done;
 
     public String getTitle() {
         return title;
@@ -42,19 +48,27 @@ public class TodoBase {
         this.description = description;
     }
 
+    public LocalDate getStart() {
+        return start;
+    }
+
+    public void setStart(LocalDate start) {
+        this.start = start;
+    }
+
+    public LocalDate getDue() {
+        return due;
+    }
+
+    public void setDue(LocalDate due) {
+        this.due = due;
+    }
+
     public Boolean getDone() {
         return done;
     }
 
     public void setDone(Boolean done) {
         this.done = done;
-    }
-
-    public TimeWindow getTimeWindow() {
-        return timeWindow;
-    }
-
-    public void setTimeWindow(TimeWindow timeWindow) {
-        this.timeWindow = timeWindow;
     }
 }

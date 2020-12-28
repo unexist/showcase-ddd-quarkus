@@ -28,13 +28,15 @@ public class TodoService {
     /**
      * Create new {@link Todo} entry and store it in repository
      *
-     * @param base
-     *          A {@link TodoBase} entry
+     * @param todoDto
+     *          A {@link TodoDTO} entry
      * @return
      **/
 
-    public boolean create(final TodoBase base) {
-        Todo todo = new Todo(this.todoRepository.nextId(), base);
+    public boolean create(final TodoDTO todoDto) {
+        Todo todo = new Todo(this.todoRepository.nextId());
+
+        TodoDTOAssembler.updateTodoFromDto(todo, todoDto);
 
         return this.todoRepository.add(todo);
     }
@@ -44,18 +46,18 @@ public class TodoService {
      *
      * @param id
      *          Id to update
-     * @param base
+     * @param todoDto
      *          Values for the entry
      * @return
      *          Either {@code true} on success; otherwise {@code false}
      **/
 
-    public boolean update(final TodoId id, final TodoBase base) {
+    public boolean update(final TodoId id, final TodoDTO todoDto) {
         Optional<Todo> todo = this.findById(id);
         boolean ret = false;
 
         if (todo.isPresent()) {
-            todo.get().update(base);
+            TodoDTOAssembler.updateTodoFromDto(todo.get(), todoDto);
 
             ret = this.todoRepository.update(todo.get());
         }

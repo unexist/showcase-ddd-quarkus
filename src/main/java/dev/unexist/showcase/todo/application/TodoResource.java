@@ -12,7 +12,8 @@
 package dev.unexist.showcase.todo.application;
 
 import dev.unexist.showcase.todo.domain.todo.Todo;
-import dev.unexist.showcase.todo.domain.todo.TodoBase;
+import dev.unexist.showcase.todo.domain.todo.TodoDTO;
+import dev.unexist.showcase.todo.domain.todo.TodoDTOAssembler;
 import dev.unexist.showcase.todo.domain.todo.TodoId;
 import dev.unexist.showcase.todo.domain.todo.TodoService;
 import dev.unexist.showcase.todo.infrastructure.stereotypes.ApplicationService;
@@ -25,6 +26,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -38,6 +40,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @ApplicationService
 @Path("/todo")
@@ -56,10 +59,10 @@ public class TodoResource {
             @APIResponse(responseCode = "406", description = "Bad data"),
             @APIResponse(responseCode = "500", description = "Server error")
     })
-    public Response create(TodoBase base) {
+    public Response create(@Valid final TodoDTO todoDto) {
         Response.ResponseBuilder response;
 
-        if (this.todoService.create(base)) {
+        if (this.todoService.create(todoDto)) {
             response = Response.status(Response.Status.CREATED);
         } else {
             response = Response.status(Response.Status.NOT_ACCEPTABLE);
@@ -74,19 +77,23 @@ public class TodoResource {
     @Tag(name = "Todo")
     @APIResponses({
             @APIResponse(responseCode = "200", description = "List of todo", content =
-                @Content(schema = @Schema(type = SchemaType.ARRAY, implementation = Todo.class))),
+                @Content(schema = @Schema(type = SchemaType.ARRAY, implementation = TodoDTO.class))),
             @APIResponse(responseCode = "204", description = "Nothing found"),
             @APIResponse(responseCode = "500", description = "Server error")
     })
     public Response getAll() {
         List<Todo> todoList = this.todoService.getAll();
 
+        List<TodoDTO> outList = todoList.stream()
+                .map(TodoDTOAssembler::fromTodoToDto)
+                .collect(Collectors.toList());
+
         Response.ResponseBuilder response;
 
         if (todoList.isEmpty()) {
             response = Response.noContent();
         } else {
-            response = Response.ok(Entity.json(todoList));
+            response = Response.ok(Entity.json(outList));
         }
 
         return response.build();
@@ -99,17 +106,19 @@ public class TodoResource {
     @Tag(name = "Todo")
     @APIResponses({
             @APIResponse(responseCode = "200", description = "Todo found", content =
-                @Content(schema = @Schema(implementation = Todo.class))),
+                @Content(schema = @Schema(implementation = TodoDTO.class))),
             @APIResponse(responseCode = "404", description = "Todo not found"),
             @APIResponse(responseCode = "500", description = "Server error")
     })
-    public Response getById(@PathParam("id") String id) {
+    public Response getById(@PathParam("id") final String id) {
         Optional<Todo> result = this.todoService.findById(new TodoId(id));
 
         Response.ResponseBuilder response;
 
         if (result.isPresent()) {
-            response = Response.ok(Entity.json(result.get()));
+            TodoDTO todoDto = TodoDTOAssembler.fromTodoToDto(result.get());
+
+            response = Response.ok(Entity.json(todoDto));
         } else {
             response = Response.status(Response.Status.NOT_FOUND);
         }
@@ -128,10 +137,10 @@ public class TodoResource {
             @APIResponse(responseCode = "404", description = "Todo not found"),
             @APIResponse(responseCode = "500", description = "Server error")
     })
-    public Response updateById(@PathParam("id") String id, TodoBase base) {
+    public Response updateById(@PathParam("id") final String id, @Valid final TodoDTO todoDto) {
         Response.ResponseBuilder response;
 
-        if (this.todoService.update(new TodoId(id), base)) {
+        if (this.todoService.update(new TodoId(id), todoDto)) {
             response = Response.noContent();
         } else {
             response = Response.status(Response.Status.NOT_FOUND);
@@ -146,7 +155,7 @@ public class TodoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Delete todo by id")
     @Tag(name = "Todo")
-    public Response delete(@PathParam("id") String id) {
+    public Response delete(@PathParam("id") final String id) {
         Response.ResponseBuilder response;
 
         if (this.todoService.deleteById(new TodoId(id))) {

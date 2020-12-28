@@ -13,33 +13,52 @@ package dev.unexist.showcase.todo.domain.todo;
 
 import dev.unexist.showcase.todo.infrastructure.stereotypes.Aggregate;
 import dev.unexist.showcase.todo.infrastructure.stereotypes.AggregateId;
+import org.apache.commons.lang3.Validate;
 
 @Aggregate
-public class Todo extends TodoBase {
+public class Todo {
     private TodoId id;
+    private Description description;
+    private TimeWindow timeWindow;
+    private Status status;
 
-    public Todo(final TodoId id, final TodoBase base) {
+    public Todo(final TodoId id) {
         this.setId(id);
-        this.update(base);
-    }
-
-    public void update(final TodoBase base) {
-        this.setTimeWindow(base.getTimeWindow());
-        this.setTitle(base.getTitle());
-        this.setDescription(base.getDescription());
-        this.setDone(base.getDone());
     }
 
     @AggregateId
-    public TodoId getId() {
+    public TodoId id() {
         return id;
     }
 
-    protected void setId(final TodoId id) {
-        if (null != id) {
-            throw new IllegalArgumentException("Missing id");
-        }
+    protected void setId(TodoId id) {
+        this.id = Validate.notNull(id, "Id ust be set");
+    }
 
-        this.id = id;
+    Description getDescription() {
+        return description;
+    }
+
+    void setDescription(Description description) {
+        this.description = Validate.notNull(description,
+            "Description must be set");
+    }
+
+    TimeWindow getTimeWindow() {
+        return timeWindow;
+    }
+
+    void setTimeWindow(TimeWindow timeWindow) {
+        this.timeWindow = Validate.notNull(timeWindow,
+                "Timewindow msut be set");
+    }
+
+    Status getStatus() {
+        return status;
+    }
+
+    void setStatus(Status status) {
+        this.status = Validate.notNull(status,
+                "Status must be set");
     }
 }
