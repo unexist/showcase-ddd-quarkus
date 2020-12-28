@@ -15,5 +15,13 @@ import dev.unexist.showcase.todo.infrastructure.stereotypes.ValueObject;
 
 @ValueObject
 public enum Status {
-    UNFINISHED, FINISHED
+    UNFINISHED, FINISHED;
+
+    boolean isFinished() {
+        return Status.FINISHED == this;
+    }
+
+    boolean isNotFinished() {
+        return Status.UNFINISHED == this;
+    }
 }
