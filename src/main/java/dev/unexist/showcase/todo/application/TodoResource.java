@@ -84,15 +84,15 @@ public class TodoResource {
     public Response getAll() {
         List<Todo> todoList = this.todoService.getAll();
 
-        List<TodoDTO> outList = todoList.stream()
-                .map(TodoDTOAssembler::fromTodoToDto)
-                .collect(Collectors.toList());
-
         Response.ResponseBuilder response;
 
         if (todoList.isEmpty()) {
             response = Response.noContent();
         } else {
+            List<TodoDTO> outList = todoList.stream()
+                    .map(TodoDTOAssembler::fromTodoToDto)
+                    .collect(Collectors.toList());
+
             response = Response.ok(Entity.json(outList));
         }
 
