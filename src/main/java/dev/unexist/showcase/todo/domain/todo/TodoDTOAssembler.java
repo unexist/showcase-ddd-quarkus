@@ -18,7 +18,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class TodoDTOAssembler {
-    public static String DATE_FORMAT = "yyyy-MM-dd";
+    public static final String DATE_FORMAT = "yyyy-MM-dd";
+
     /**
      * Create {@link TodoDTO} from given {@link Todo}
      *
@@ -36,8 +37,8 @@ public class TodoDTOAssembler {
 
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
 
-        todoDto.setStart(sdf.format(todo.getTimeWindow().getStart()));
-        todoDto.setDue(sdf.format(todo.getTimeWindow().getDue()));
+        todoDto.setStartDate(sdf.format(todo.getTimeWindow().getStart()));
+        todoDto.setDueDate(sdf.format(todo.getTimeWindow().getDue()));
 
         todoDto.setDone(Status.FINISHED.equals(todo.getStatus()));
 
@@ -59,8 +60,8 @@ public class TodoDTOAssembler {
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern(DATE_FORMAT);
 
-        todo.setTimeWindow(new TimeWindow(LocalDate.parse(todoDto.getStart(), dtf),
-                        LocalDate.parse(todoDto.getDue(), dtf)));
+        todo.setTimeWindow(new TimeWindow(LocalDate.parse(todoDto.getStartDate(), dtf),
+                        LocalDate.parse(todoDto.getDueDate(), dtf)));
         todo.setStatus(BooleanUtils.isTrue(todoDto.getDone()) ?
             Status.FINISHED : Status.UNFINISHED);
     }

@@ -12,20 +12,28 @@
 package dev.unexist.showcase.todo.domain.todo;
 
 import io.smallrye.common.constraint.NotNull;
+import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
+import javax.validation.constraints.NotBlank;
 
 public class TodoDTO {
 
-    @NotNull
+    @NotBlank
+    @Schema(type = SchemaType.STRING, example = "Title of a todo")
     private String title;
 
-    @NotNull
+    @NotBlank
+    @Schema(type = SchemaType.STRING, example = "Description of what to do")
     private String description;
 
-    @NotNull
-    private String start;
+    @NotBlank
+    @Schema(type = SchemaType.STRING, example = TodoDTOAssembler.DATE_FORMAT)
+    private String startDate;
 
-    @NotNull
-    private String due;
+    @NotBlank
+    @Schema(type = SchemaType.STRING, example = TodoDTOAssembler.DATE_FORMAT)
+    private String dueDate;
 
     @NotNull
     private Boolean done;
@@ -46,20 +54,20 @@ public class TodoDTO {
         this.description = description;
     }
 
-    public String getStart() {
-        return start;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setStart(final String start) {
-        this.start = start;
+    public void setStartDate(final String startDate) {
+        this.startDate = startDate;
     }
 
-    public String getDue() {
-        return due;
+    public String getDueDate() {
+        return dueDate;
     }
 
-    public void setDue(final String due) {
-        this.due = due;
+    public void setDueDate(final String dueDate) {
+        this.dueDate = dueDate;
     }
 
     public Boolean getDone() {
