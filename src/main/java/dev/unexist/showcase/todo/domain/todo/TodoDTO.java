@@ -13,8 +13,6 @@ package dev.unexist.showcase.todo.domain.todo;
 
 import io.smallrye.common.constraint.NotNull;
 
-import java.time.LocalDate;
-
 public class TodoDTO {
 
     @NotNull
@@ -24,10 +22,10 @@ public class TodoDTO {
     private String description;
 
     @NotNull
-    private LocalDate start;
+    private String start;
 
     @NotNull
-    private LocalDate due;
+    private String due;
 
     @NotNull
     private Boolean done;
@@ -48,19 +46,19 @@ public class TodoDTO {
         this.description = description;
     }
 
-    public LocalDate getStart() {
+    public String getStart() {
         return start;
     }
 
-    public void setStart(LocalDate start) {
+    public void setStart(final String start) {
         this.start = start;
     }
 
-    public LocalDate getDue() {
+    public String getDue() {
         return due;
     }
 
-    public void setDue(LocalDate due) {
+    public void setDue(final String due) {
         this.due = due;
     }
 

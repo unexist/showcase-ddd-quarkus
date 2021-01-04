@@ -13,7 +13,12 @@ package dev.unexist.showcase.todo.domain.todo;
 
 import org.apache.commons.lang3.BooleanUtils;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class TodoDTOAssembler {
+    public static String DATE_FORMAT = "yyyy-MM-dd";
     /**
      * Create {@link TodoDTO} from given {@link Todo}
      *
@@ -29,8 +34,10 @@ public class TodoDTOAssembler {
         todoDto.setTitle(todo.getDescription().getTitle());
         todoDto.setDescription(todo.getDescription().getFull());
 
-        todoDto.setStart(todo.getTimeWindow().getStart());
-        todoDto.setDue(todo.getTimeWindow().getDue());
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
+
+        todoDto.setStart(sdf.format(todo.getTimeWindow().getStart()));
+        todoDto.setDue(sdf.format(todo.getTimeWindow().getDue()));
 
         todoDto.setDone(Status.FINISHED.equals(todo.getStatus()));
 
@@ -47,10 +54,13 @@ public class TodoDTOAssembler {
      **/
 
     public static void updateTodoFromDto(final Todo todo, final TodoDTO todoDto) {
-        todo.setDescription(
-                new Description(todoDto.getTitle(), todoDto.getDescription()));
-        todo.setTimeWindow(
-                new TimeWindow(todoDto.getStart(), todoDto.getDue()));
+        todo.setDescription(new Description(todoDto.getTitle(),
+                todoDto.getDescription()));
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern(DATE_FORMAT);
+
+        todo.setTimeWindow(new TimeWindow(LocalDate.parse(todoDto.getStart(), dtf),
+                        LocalDate.parse(todoDto.getDue(), dtf)));
         todo.setStatus(BooleanUtils.isTrue(todoDto.getDone()) ?
             Status.FINISHED : Status.UNFINISHED);
     }
