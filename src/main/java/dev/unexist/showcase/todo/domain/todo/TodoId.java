@@ -21,7 +21,7 @@ public class TodoId {
         this.setId(id);
     }
 
-    protected void setId(String id) {
+    protected void setId(final String id) {
         if (null == id) {
             throw new IllegalArgumentException("Missing id");
         }
@@ -30,9 +30,14 @@ public class TodoId {
     }
 
     @Override
+    public int hashCode() {
+        return this.id.hashCode();
+    }
+
+    @Override
     public boolean equals(Object obj) {
-        return null != obj && obj.getClass() == this.getClass() &&
-                this.id.equals(((TodoId)obj).id);
+        return null != obj && obj.getClass() == this.getClass()
+                && this.id.equals(((TodoId)obj).id);
     }
 
     @Override

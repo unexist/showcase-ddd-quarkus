@@ -43,10 +43,15 @@ public class Description {
     }
 
     @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
     public boolean equals(Object obj) {
-        return null != obj && obj.getClass() == this.getClass() &&
-                this.title == ((Description)obj).title &&
-                this.full == ((Description)obj).full;
+        return null != obj && obj.getClass() == this.getClass()
+                && this.title.equals(((Description)obj).title)
+                && this.full.equals(((Description)obj).full);
     }
 
     @Override

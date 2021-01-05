@@ -62,7 +62,8 @@ public class TodoDTOAssembler {
 
         todo.setTimeWindow(new TimeWindow(LocalDate.parse(todoDto.getStartDate(), dtf),
                         LocalDate.parse(todoDto.getDueDate(), dtf)));
-        todo.setStatus(BooleanUtils.isTrue(todoDto.getDone()) ?
-            Status.FINISHED : Status.UNFINISHED);
+        todo.setStatus(BooleanUtils.isTrue(todoDto.getDone())
+                ? Status.FINISHED
+                : Status.UNFINISHED);
     }
 }

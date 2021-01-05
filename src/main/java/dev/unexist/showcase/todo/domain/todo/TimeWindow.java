@@ -25,7 +25,7 @@ public class TimeWindow {
     TimeWindow(LocalDate start, LocalDate due) {
         if (start.isBefore(due)) {
             throw new IllegalArgumentException("Start must be before due");
-        };
+        }
 
         this.setStart(start);
         this.setDue(due);
@@ -48,19 +48,22 @@ public class TimeWindow {
     }
 
     @Override
+    public int hashCode() {
+        return this.start.hashCode() + this.due.hashCode();
+    }
+
+    @Override
     public boolean equals(Object obj) {
-        return null != obj && obj.getClass() == this.getClass() &&
-                this.start == ((TimeWindow)obj).start &&
-                this.due == ((TimeWindow)obj).due;
+        return null != obj && obj.getClass() == this.getClass()
+                && this.start.equals(((TimeWindow)obj).start)
+                && this.due.equals(((TimeWindow)obj).due);
     }
 
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-        return String.format("%s - %s",
-                sdf.format(this.start),
+        return String.format("%s - %s", sdf.format(this.start),
                 sdf.format(this.due));
-
     }
 }
