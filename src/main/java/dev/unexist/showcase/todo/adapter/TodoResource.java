@@ -9,10 +9,9 @@
  * See the file COPYING for details.
  **/
 
-package dev.unexist.showcase.todo.application;
+package dev.unexist.showcase.todo.adapter;
 
 import dev.unexist.showcase.todo.domain.todo.Todo;
-import dev.unexist.showcase.todo.domain.todo.TodoDTO;
 import dev.unexist.showcase.todo.domain.todo.TodoDTOAssembler;
 import dev.unexist.showcase.todo.domain.todo.TodoId;
 import dev.unexist.showcase.todo.domain.todo.TodoService;

@@ -9,8 +9,9 @@
  * See the file COPYING for details.
  **/
 
-package dev.unexist.showcase.todo.domain.todo;
+package dev.unexist.showcase.todo.adapter;
 
+import dev.unexist.showcase.todo.domain.todo.TodoDTOAssembler;
 import io.smallrye.common.constraint.NotNull;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
