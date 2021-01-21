@@ -11,7 +11,7 @@
 
 package dev.unexist.showcase.todo.domain.todo;
 
-import dev.unexist.showcase.todo.adapter.TodoDTO;
+import dev.unexist.showcase.todo.boundary.TodoDTO;
 import dev.unexist.showcase.todo.infrastructure.stereotypes.DomainService;
 
 import javax.enterprise.context.ApplicationScoped;
