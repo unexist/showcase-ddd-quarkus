@@ -11,6 +11,8 @@
 
 package dev.unexist.showcase.todo.domain.todo;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import dev.unexist.showcase.todo.infrastructure.serializer.DateSerializer;
 import dev.unexist.showcase.todo.infrastructure.stereotypes.ValueObject;
 import org.apache.commons.lang3.Validate;
 
@@ -19,7 +21,11 @@ import java.time.LocalDate;
 
 @ValueObject
 public class TimeWindow {
+
+    @JsonSerialize(using = DateSerializer.class)
     private LocalDate start;
+
+    @JsonSerialize(using = DateSerializer.class)
     private LocalDate due;
 
     TimeWindow(LocalDate start, LocalDate due) {
