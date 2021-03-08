@@ -15,9 +15,11 @@ import dev.unexist.showcase.todo.domain.todo.TodoDTOAssembler;
 import io.smallrye.common.constraint.NotNull;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.jmolecules.architecture.layered.InterfaceLayer;
 
 import javax.validation.constraints.NotBlank;
 
+@InterfaceLayer
 public class TodoDTO {
 
     @NotBlank

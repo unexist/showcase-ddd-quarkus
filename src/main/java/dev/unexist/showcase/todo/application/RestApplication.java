@@ -11,7 +11,10 @@
 
 package dev.unexist.showcase.todo.application;
 
+import org.jmolecules.architecture.layered.ApplicationLayer;
+
 import javax.ws.rs.core.Application;
 
+@ApplicationLayer
 public class RestApplication extends Application {
 }

@@ -14,11 +14,13 @@ package dev.unexist.showcase.todo.infrastructure.serializer;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
+import org.jmolecules.architecture.layered.InfrastructureLayer;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+@InfrastructureLayer
 public class DateSerializer extends JsonSerializer<LocalDate> {
 
     @Override

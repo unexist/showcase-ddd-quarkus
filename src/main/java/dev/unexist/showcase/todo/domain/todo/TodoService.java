@@ -12,14 +12,14 @@
 package dev.unexist.showcase.todo.domain.todo;
 
 import dev.unexist.showcase.todo.boundary.TodoDTO;
-import dev.unexist.showcase.todo.infrastructure.stereotypes.DomainService;
+import org.jmolecules.architecture.layered.DomainLayer;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.Optional;
 
-@DomainService
+@DomainLayer
 @ApplicationScoped
 public class TodoService {
 

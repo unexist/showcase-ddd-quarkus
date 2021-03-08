@@ -11,11 +11,12 @@
 
 package dev.unexist.showcase.todo.domain.todo;
 
-import dev.unexist.showcase.todo.infrastructure.stereotypes.Aggregate;
-import dev.unexist.showcase.todo.infrastructure.stereotypes.AggregateId;
 import org.apache.commons.lang3.Validate;
+import org.jmolecules.architecture.layered.DomainLayer;
+import org.jmolecules.ddd.annotation.AggregateRoot;
 
-@Aggregate
+@DomainLayer
+@AggregateRoot
 public class Todo {
     private TodoId id;
     private Description description;
@@ -26,7 +27,6 @@ public class Todo {
         this.setId(id);
     }
 
-    @AggregateId
     public TodoId id() {
         return id;
     }

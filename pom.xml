@@ -17,6 +17,7 @@
         <hg-revision-plugin.version>0.10</hg-revision-plugin.version>
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
         <jackson-modules-java8.version>2.12.1</jackson-modules-java8.version>
+        <jmolecules.version>1.1.0</jmolecules.version>
 
         <!-- Quarkus -->
         <quarkus-plugin.version>1.11.1.Final</quarkus-plugin.version>
@@ -68,6 +69,18 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${apache-commons-lang.version}</version>
+        </dependency>
+
+        <!-- Reporting -->
+        <dependency>
+            <groupId>org.jmolecules</groupId>
+            <artifactId>jmolecules-layered-architecture</artifactId>
+            <version>${jmolecules.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jmolecules</groupId>
+            <artifactId>jmolecules-ddd</artifactId>
+            <version>${jmolecules.version}</version>
         </dependency>
 
         <!-- Testing -->

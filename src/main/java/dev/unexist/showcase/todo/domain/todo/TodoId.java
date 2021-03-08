@@ -11,8 +11,10 @@
 
 package dev.unexist.showcase.todo.domain.todo;
 
-import dev.unexist.showcase.todo.infrastructure.stereotypes.ValueObject;
+import org.jmolecules.architecture.layered.DomainLayer;
+import org.jmolecules.ddd.annotation.ValueObject;
 
+@DomainLayer
 @ValueObject
 public class TodoId {
     private String id;

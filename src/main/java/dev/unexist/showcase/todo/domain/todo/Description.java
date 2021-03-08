@@ -11,9 +11,11 @@
 
 package dev.unexist.showcase.todo.domain.todo;
 
-import dev.unexist.showcase.todo.infrastructure.stereotypes.ValueObject;
+import org.jmolecules.architecture.layered.DomainLayer;
+import org.jmolecules.ddd.annotation.ValueObject;
 import org.apache.commons.lang3.Validate;
 
+@DomainLayer
 @ValueObject
 public class Description {
     private String title;

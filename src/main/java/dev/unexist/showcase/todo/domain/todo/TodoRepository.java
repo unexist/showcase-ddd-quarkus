@@ -11,7 +11,8 @@
 
 package dev.unexist.showcase.todo.domain.todo;
 
-import dev.unexist.showcase.todo.infrastructure.stereotypes.Repository;
+import org.jmolecules.architecture.layered.DomainLayer;
+import org.jmolecules.ddd.annotation.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +24,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.IntStream;
 
+@DomainLayer
 @Repository
 @ApplicationScoped
 public class TodoRepository {

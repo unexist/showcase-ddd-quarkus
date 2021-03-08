@@ -13,11 +13,13 @@ package dev.unexist.showcase.todo.domain.todo;
 
 import dev.unexist.showcase.todo.boundary.TodoDTO;
 import org.apache.commons.lang3.BooleanUtils;
+import org.jmolecules.architecture.layered.DomainLayer;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+@DomainLayer
 public class TodoDTOAssembler {
     public static final String DATE_FORMAT = "yyyy-MM-dd";
 

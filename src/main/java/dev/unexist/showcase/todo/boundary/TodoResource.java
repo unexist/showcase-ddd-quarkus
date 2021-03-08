@@ -15,7 +15,6 @@ import dev.unexist.showcase.todo.domain.todo.Todo;
 import dev.unexist.showcase.todo.domain.todo.TodoDTOAssembler;
 import dev.unexist.showcase.todo.domain.todo.TodoId;
 import dev.unexist.showcase.todo.domain.todo.TodoService;
-import dev.unexist.showcase.todo.infrastructure.stereotypes.ApplicationService;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
@@ -23,6 +22,7 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
+import org.jmolecules.architecture.layered.InterfaceLayer;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -41,7 +41,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@ApplicationService
+@InterfaceLayer
 @Path("/todo")
 public class TodoResource {
 
