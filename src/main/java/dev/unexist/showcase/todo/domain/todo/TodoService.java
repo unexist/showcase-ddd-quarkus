@@ -11,7 +11,6 @@
 
 package dev.unexist.showcase.todo.domain.todo;
 
-import dev.unexist.showcase.todo.boundary.TodoDTO;
 import org.jmolecules.architecture.layered.DomainLayer;
 
 import javax.enterprise.context.ApplicationScoped;

@@ -9,17 +9,16 @@
  * See the file LICENSE for details.
  **/
 
-package dev.unexist.showcase.todo.boundary;
+package dev.unexist.showcase.todo.domain.todo;
 
-import dev.unexist.showcase.todo.domain.todo.TodoDTOAssembler;
 import io.smallrye.common.constraint.NotNull;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
-import org.jmolecules.architecture.layered.InterfaceLayer;
+import org.jmolecules.architecture.layered.DomainLayer;
 
 import javax.validation.constraints.NotBlank;
 
-@InterfaceLayer
+@DomainLayer
 public class TodoDTO {
 
     @NotBlank
