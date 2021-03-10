@@ -164,7 +164,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>validate</id>
+                        <id>run-checkstyle</id>
                         <phase>validate</phase>
                         <goals>
                             <goal>check</goal>
@@ -186,8 +186,8 @@
                 </dependencies>
                 <executions>
                     <execution>
-                        <id>validate</id>
-                        <phase>validate</phase>
+                        <id>run-spotbugs</id>
+                        <phase>compile</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
