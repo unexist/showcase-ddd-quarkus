@@ -14,6 +14,9 @@ package dev.unexist.showcase.todo.domain.todo;
 import org.jmolecules.architecture.layered.DomainLayer;
 import org.jmolecules.ddd.annotation.ValueObject;
 
+import java.util.Locale;
+import java.util.UUID;
+
 @DomainLayer
 @ValueObject
 public class TodoId {
@@ -45,5 +48,17 @@ public class TodoId {
     @Override
     public String toString() {
         return String.format("%s", this.id);
+    }
+
+    /**
+     * Create a new {@link TodoId}
+     *
+     * @return
+     *          New {@link TodoId}
+     **/
+
+    public static TodoId nextId() {
+        return new TodoId(
+                UUID.randomUUID().toString().toUpperCase(Locale.getDefault()));
     }
 }

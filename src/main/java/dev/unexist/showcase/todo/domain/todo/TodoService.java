@@ -34,7 +34,7 @@ public class TodoService {
      **/
 
     public boolean create(final TodoDTO todoDto) {
-        Todo todo = new Todo(this.todoRepository.nextId());
+        Todo todo = new Todo(TodoId.nextId());
 
         TodoDTOAssembler.updateTodoFromDto(todo, todoDto);
 
