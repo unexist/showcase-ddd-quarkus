@@ -9,7 +9,7 @@
  * See the file LICENSE for details.
  **/
 
-package dev.unexist.showcase.todo.boundary;
+package dev.unexist.showcase.todo.adapter;
 
 import dev.unexist.showcase.todo.domain.todo.Todo;
 import dev.unexist.showcase.todo.domain.todo.TodoDTO;
