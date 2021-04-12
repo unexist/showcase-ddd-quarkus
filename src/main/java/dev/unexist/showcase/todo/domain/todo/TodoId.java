@@ -13,18 +13,33 @@ package dev.unexist.showcase.todo.domain.todo;
 
 import org.jmolecules.architecture.layered.DomainLayer;
 import org.jmolecules.ddd.annotation.ValueObject;
+import org.jmolecules.ddd.types.Identifier;
 
 import java.util.Locale;
 import java.util.UUID;
 
 @DomainLayer
 @ValueObject
-public class TodoId {
+public class TodoId implements Identifier {
     private String id;
+
+    /**
+     * Constructor
+     *
+     * @param id
+     *          Id for the entry
+     **/
 
     public TodoId(final String id) {
         this.setId(id);
     }
+
+    /**
+     * Set id of entry
+     *
+     * @param id
+     *          Id for the entry
+     **/
 
     protected void setId(final String id) {
         if (null == id) {

@@ -23,6 +23,18 @@ import java.time.format.DateTimeFormatter;
 @InfrastructureLayer
 public class DateSerializer extends JsonSerializer<LocalDate> {
 
+    /**
+     * Serialize data
+     *
+     * @param value
+     *          Value to serialize
+     * @param gen
+     *          Generate to use
+     * @param serializers
+     *          Serializer to use
+     * @throws IOException
+     **/
+
     @Override
     public void serialize(LocalDate value, JsonGenerator gen,
                           SerializerProvider serializers) throws IOException {

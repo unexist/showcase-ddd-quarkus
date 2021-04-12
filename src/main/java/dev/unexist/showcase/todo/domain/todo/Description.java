@@ -21,23 +21,60 @@ public class Description {
     private String title;
     private String full;
 
+    /**
+     * Constructor
+     *
+     * @param title
+     *          Title of the description
+     * @param full
+     *          Full text of the description
+     **/
+
     Description(final String title, final String full) {
         this.setTitle(title);
         this.setFull(full);
     }
 
+    /**
+     * Get title of the description
+     *
+     * @return
+     *          Title of the description
+     **/
+
     String getTitle() {
         return title;
     }
+
+    /**
+     * Set title of the description
+     *
+     * @param title
+     *          Title of the description
+     **/
 
     protected void setTitle(String title) {
         this.title = Validate.notNull(title,
                 "Title must be set");
     }
 
+    /**
+     * Get full text of the description
+     *
+     * @return
+     *          Full text of the description
+     **/
+
     String getFull() {
         return full;
     }
+
+    /**
+     * Set full text of the description
+     *
+     * @param full
+     *          Full text of the description
+     **/
 
     protected void setFull(String full) {
         this.full = Validate.notNull(full,

@@ -19,9 +19,23 @@ import org.jmolecules.ddd.annotation.ValueObject;
 public enum Status {
     UNFINISHED, FINISHED;
 
+    /**
+     * Check whether status is {@code FINISHED}
+     *
+     * @return
+     *          Either {@code true} when the status is {@code FINISHED}; otherwise {@code false}
+     **/
+
     boolean isFinished() {
         return Status.FINISHED == this;
     }
+
+    /**
+     * Check whether status is {@code UNFINISHED}
+     *
+     * @return
+     *          Either {@code true} when the status is {@code UNFINISHED}; otherwise {@code false}
+     **/
 
     boolean isNotFinished() {
         return Status.UNFINISHED == this;

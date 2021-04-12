@@ -66,7 +66,7 @@ public class TodoRepositoryImpl implements TodoRepository {
 
     public boolean update(final Todo todo) {
         this.list = this.list.stream()
-                .map(t -> t.id().equals(todo.id()) ? todo : t)
+                .map(t -> t.getId().equals(todo.getId()) ? todo : t)
                 .collect(Collectors.toList());
 
         return true;
@@ -82,7 +82,7 @@ public class TodoRepositoryImpl implements TodoRepository {
      **/
 
     public boolean deleteById(TodoId id) {
-        return this.list.removeIf(t -> t.id().equals(id));
+        return this.list.removeIf(t -> t.getId().equals(id));
     }
 
     /**
@@ -106,7 +106,7 @@ public class TodoRepositoryImpl implements TodoRepository {
 
     public Optional<Todo> findById(TodoId id) {
         return this.list.stream()
-                .filter(t -> t.id().equals(id))
+                .filter(t -> t.getId().equals(id))
                 .findFirst();
     }
 }

@@ -31,6 +31,7 @@ public class TodoService {
      * @param todoDto
      *          A {@link TodoDTO} entry
      * @return
+     *          Either {@code true} on success; otherwise {@code false}
      **/
 
     public boolean create(final TodoDTO todoDto) {

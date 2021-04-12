@@ -23,12 +23,20 @@ import java.time.LocalDate;
 @DomainLayer
 @ValueObject
 public class TimeWindow {
-
     @JsonSerialize(using = DateSerializer.class)
     private LocalDate start;
 
     @JsonSerialize(using = DateSerializer.class)
     private LocalDate due;
+
+    /**
+     * Constructor
+     *
+     * @param start
+     *          Start date of the window
+     * @param due
+     *          End date of the window
+     **/
 
     TimeWindow(LocalDate start, LocalDate due) {
         if (start.isBefore(due)) {
@@ -39,17 +47,45 @@ public class TimeWindow {
         this.setDue(due);
     }
 
+    /**
+     * Get start date of the window
+     *
+     * @return
+     *          Start date of the window
+     */
+
     LocalDate getStart() {
         return start;
     }
+
+    /**
+     * Set start date of the window
+     *
+     * @param start
+     *          Start date of the window
+     **/
 
     protected void setStart(LocalDate start) {
         this.start = Validate.notNull(start, "Start must be set");
     }
 
+    /**
+     * Get due date of the window
+     *
+     * @return
+     *          Due date of the window
+     **/
+
     LocalDate getDue() {
         return due;
     }
+
+    /**
+     * Set due date of the window
+     *
+     * @param due
+     *          Due date of the window
+     **/
 
     protected void setDue(LocalDate due) {
         this.due = Validate.notNull(due, "Due must be set");
