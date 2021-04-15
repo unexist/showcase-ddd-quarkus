@@ -12,7 +12,7 @@
 package dev.unexist.showcase.todo.infrastructure.persistence;
 
 import dev.unexist.showcase.todo.domain.todo.Todo;
-import dev.unexist.showcase.todo.domain.todo.TodoId;
+import dev.unexist.showcase.todo.domain.todo.TodoIdentifier;
 import dev.unexist.showcase.todo.domain.todo.TodoRepository;
 import org.jmolecules.architecture.layered.InfrastructureLayer;
 import org.jmolecules.ddd.annotation.Repository;
@@ -57,7 +57,7 @@ public class TodoRepositoryImpl implements TodoRepository {
     }
 
     @Override
-    public boolean deleteById(TodoId id) {
+    public boolean deleteById(TodoIdentifier id) {
         return this.list.removeIf(t -> t.getId().equals(id));
     }
 
@@ -67,7 +67,7 @@ public class TodoRepositoryImpl implements TodoRepository {
     }
 
     @Override
-    public Optional<Todo> findById(TodoId id) {
+    public Optional<Todo> findById(TodoIdentifier id) {
         return this.list.stream()
                 .filter(t -> t.getId().equals(id))
                 .findFirst();

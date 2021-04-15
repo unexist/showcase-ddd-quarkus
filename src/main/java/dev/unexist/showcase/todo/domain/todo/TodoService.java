@@ -35,7 +35,7 @@ public class TodoService {
      **/
 
     public boolean create(final TodoDTO todoDto) {
-        Todo todo = new Todo(TodoId.nextId());
+        Todo todo = new Todo(TodoIdentifier.nextId());
 
         TodoDTOAssembler.updateTodoFromDto(todo, todoDto);
 
@@ -53,7 +53,7 @@ public class TodoService {
      *          Either {@code true} on success; otherwise {@code false}
      **/
 
-    public boolean update(final TodoId id, final TodoDTO todoDto) {
+    public boolean update(final TodoIdentifier id, final TodoDTO todoDto) {
         Optional<Todo> todo = this.findById(id);
         boolean ret = false;
 
@@ -75,7 +75,7 @@ public class TodoService {
      *          Either {@code true} on success; otherwise {@code false}
      **/
 
-    public boolean deleteById(final TodoId id) {
+    public boolean deleteById(final TodoIdentifier id) {
         return this.todoRepository.deleteById(id);
     }
 
@@ -99,7 +99,7 @@ public class TodoService {
      *          A {@link Optional} of the entry
      **/
 
-    public Optional<Todo> findById(final TodoId id) {
+    public Optional<Todo> findById(final TodoIdentifier id) {
         return this.todoRepository.findById(id);
     }
 }

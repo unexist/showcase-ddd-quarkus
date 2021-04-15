@@ -17,8 +17,8 @@ import org.jmolecules.ddd.types.AggregateRoot;
 import org.jmolecules.ddd.types.Identifiable;
 
 @DomainLayer
-public class Todo implements AggregateRoot<Todo, TodoId>, Identifiable<TodoId> {
-    private TodoId id;
+public class Todo implements AggregateRoot<Todo, TodoIdentifier>, Identifiable<TodoIdentifier> {
+    private TodoIdentifier id;
     private Description description;
     private TimeWindow timeWindow;
     private Status status;
@@ -30,12 +30,12 @@ public class Todo implements AggregateRoot<Todo, TodoId>, Identifiable<TodoId> {
      *          Id of the entry
      **/
 
-    public Todo(final TodoId id) {
+    public Todo(final TodoIdentifier id) {
         this.setId(id);
     }
 
     @Override
-    public TodoId getId() {
+    public TodoIdentifier getId() {
         return this.id;
     }
 
@@ -46,7 +46,7 @@ public class Todo implements AggregateRoot<Todo, TodoId>, Identifiable<TodoId> {
      *          Id of the entry
      **/
 
-    protected void setId(TodoId id) {
+    protected void setId(TodoIdentifier id) {
         this.id = Validate.notNull(id, "Id ust be set");
     }
 

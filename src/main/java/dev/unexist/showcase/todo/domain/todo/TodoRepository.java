@@ -42,15 +42,15 @@ public interface TodoRepository {
     boolean update(Todo todo);
 
     /**
-     * Delete {@link Todo} with given {@link TodoId}
+     * Delete {@link Todo} with given {@link TodoIdentifier}
      *
      * @param id
-     *          {@link TodoId} to delete
+     *          {@link TodoIdentifier} to delete
      * @return
      *          Either {@code true} on success; otherwise {@code false}
      **/
 
-    boolean deleteById(TodoId id);
+    boolean deleteById(TodoIdentifier id);
 
     /**
      * Get all {@link Todo} entries
@@ -61,13 +61,13 @@ public interface TodoRepository {
     List<Todo> getAll();
 
     /**
-     * Find {@link Todo} by given {@link TodoId}
+     * Find {@link Todo} by given {@link TodoIdentifier}
      *
      * @param id
-     *          {@link TodoId} to find
+     *          {@link TodoIdentifier} to find
      * @return
      *          A {@link Optional} with the result of the lookup
      **/
 
-    Optional<Todo> findById(TodoId id);
+    Optional<Todo> findById(TodoIdentifier id);
 }

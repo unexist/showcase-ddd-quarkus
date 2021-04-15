@@ -20,7 +20,7 @@ import java.util.UUID;
 
 @DomainLayer
 @ValueObject
-public class TodoId implements Identifier {
+public class TodoIdentifier implements Identifier {
     private String id;
 
     /**
@@ -30,7 +30,7 @@ public class TodoId implements Identifier {
      *          Id for the entry
      **/
 
-    public TodoId(final String id) {
+    public TodoIdentifier(final String id) {
         this.setId(id);
     }
 
@@ -57,7 +57,7 @@ public class TodoId implements Identifier {
     @Override
     public boolean equals(Object obj) {
         return null != obj && obj.getClass() == this.getClass()
-                && this.id.equals(((TodoId)obj).id);
+                && this.id.equals(((TodoIdentifier)obj).id);
     }
 
     @Override
@@ -66,14 +66,14 @@ public class TodoId implements Identifier {
     }
 
     /**
-     * Create a new {@link TodoId}
+     * Create a new {@link TodoIdentifier}
      *
      * @return
-     *          New {@link TodoId}
+     *          New {@link TodoIdentifier}
      **/
 
-    public static TodoId nextId() {
-        return new TodoId(
+    public static TodoIdentifier nextId() {
+        return new TodoIdentifier(
                 UUID.randomUUID().toString().toUpperCase(Locale.getDefault()));
     }
 }

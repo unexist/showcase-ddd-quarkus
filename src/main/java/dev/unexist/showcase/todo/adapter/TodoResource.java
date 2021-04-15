@@ -14,7 +14,7 @@ package dev.unexist.showcase.todo.adapter;
 import dev.unexist.showcase.todo.domain.todo.Todo;
 import dev.unexist.showcase.todo.domain.todo.TodoDTO;
 import dev.unexist.showcase.todo.domain.todo.TodoDTOAssembler;
-import dev.unexist.showcase.todo.domain.todo.TodoId;
+import dev.unexist.showcase.todo.domain.todo.TodoIdentifier;
 import dev.unexist.showcase.todo.domain.todo.TodoService;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
@@ -111,7 +111,7 @@ public class TodoResource {
             @APIResponse(responseCode = "500", description = "Server error")
     })
     public Response getById(@PathParam("id") final String id) {
-        Optional<Todo> result = this.todoService.findById(new TodoId(id));
+        Optional<Todo> result = this.todoService.findById(new TodoIdentifier(id));
 
         Response.ResponseBuilder response;
 
@@ -140,7 +140,7 @@ public class TodoResource {
     public Response updateById(@PathParam("id") final String id, @Valid final TodoDTO todoDto) {
         Response.ResponseBuilder response;
 
-        if (this.todoService.update(new TodoId(id), todoDto)) {
+        if (this.todoService.update(new TodoIdentifier(id), todoDto)) {
             response = Response.noContent();
         } else {
             response = Response.status(Response.Status.NOT_FOUND);
@@ -158,7 +158,7 @@ public class TodoResource {
     public Response delete(@PathParam("id") final String id) {
         Response.ResponseBuilder response;
 
-        if (this.todoService.deleteById(new TodoId(id))) {
+        if (this.todoService.deleteById(new TodoIdentifier(id))) {
             response = Response.noContent();
         } else {
             response = Response.status(Response.Status.NOT_FOUND);
