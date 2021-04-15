@@ -42,28 +42,12 @@ public class TodoRepositoryImpl implements TodoRepository {
         this.list = new ArrayList<>();
     }
 
-    /**
-     * Add {@link Todo} entry to list
-     *
-     * @param todo
-     *          {@link Todo} entry to add
-     * @return
-     *          Either {@code true} on success; otherwise {@code false}
-     **/
-
+    @Override
     public boolean add(final Todo todo) {
         return this.list.add(todo);
     }
 
-    /**
-     * Update {@link Todo} with given id
-     *
-     * @param todo
-     *          A {@link Todo} to update
-     * @return
-     *          Either {@code true} on success; otherwise {@code false}
-     **/
-
+    @Override
     public boolean update(final Todo todo) {
         this.list = this.list.stream()
                 .map(t -> t.getId().equals(todo.getId()) ? todo : t)
@@ -72,38 +56,17 @@ public class TodoRepositoryImpl implements TodoRepository {
         return true;
     }
 
-    /**
-     * Delete {@link Todo} with given id
-     *
-     * @param id
-     *          Id to delete
-     * @return
-     *          Either {@code true} on success; otherwise {@code false}
-     **/
-
+    @Override
     public boolean deleteById(TodoId id) {
         return this.list.removeIf(t -> t.getId().equals(id));
     }
 
-    /**
-     * Get all {@link Todo} entries
-     *
-     * @return List of all stored {@link Todo}
-     **/
-
+    @Override
     public List<Todo> getAll() {
         return Collections.unmodifiableList(this.list);
     }
 
-    /**
-     * Find {@link Todo} by given id
-     *
-     * @param id
-     *          Id to find
-     * @return
-     *          A {@link Optional} with the result of the lookup
-     **/
-
+    @Override
     public Optional<Todo> findById(TodoId id) {
         return this.list.stream()
                 .filter(t -> t.getId().equals(id))

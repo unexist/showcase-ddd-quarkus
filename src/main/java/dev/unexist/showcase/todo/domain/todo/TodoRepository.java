@@ -18,9 +18,56 @@ import java.util.Optional;
 
 @DomainLayer
 public interface TodoRepository {
+
+    /**
+     * Add {@link Todo} entry to list
+     *
+     * @param todo
+     *          {@link Todo} entry to add
+     * @return
+     *          Either {@code true} on success; otherwise {@code false}
+     **/
+
     boolean add(Todo todo);
+
+    /**
+     * Update {@link Todo} with given id
+     *
+     * @param todo
+     *          A {@link Todo} to update
+     * @return
+     *          Either {@code true} on success; otherwise {@code false}
+     **/
+
     boolean update(Todo todo);
+
+    /**
+     * Delete {@link Todo} with given {@link TodoId}
+     *
+     * @param id
+     *          {@link TodoId} to delete
+     * @return
+     *          Either {@code true} on success; otherwise {@code false}
+     **/
+
     boolean deleteById(TodoId id);
+
+    /**
+     * Get all {@link Todo} entries
+     *
+     * @return List of all stored {@link Todo}
+     **/
+
     List<Todo> getAll();
+
+    /**
+     * Find {@link Todo} by given {@link TodoId}
+     *
+     * @param id
+     *          {@link TodoId} to find
+     * @return
+     *          A {@link Optional} with the result of the lookup
+     **/
+
     Optional<Todo> findById(TodoId id);
 }
