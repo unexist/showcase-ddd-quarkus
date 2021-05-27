@@ -29,8 +29,8 @@ import java.util.stream.Collectors;
 @ApplicationScoped
 @InfrastructureLayer
 @Repository
-public class TodoRepositoryImpl implements TodoRepository {
-    private static final Logger LOGGER = LoggerFactory.getLogger(TodoRepositoryImpl.class);
+public class ListTodoRepository implements TodoRepository {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ListTodoRepository.class);
 
     private List<Todo> list;
 
@@ -38,7 +38,7 @@ public class TodoRepositoryImpl implements TodoRepository {
      * Constructor
      **/
 
-    TodoRepositoryImpl() {
+    ListTodoRepository() {
         this.list = new ArrayList<>();
     }
 
