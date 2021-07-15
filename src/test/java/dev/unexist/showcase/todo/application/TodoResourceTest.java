@@ -5,7 +5,7 @@
  * @copyright 2019 Christoph Kappel <unexist@subforge.org>
  * @version $Id$
  *
- * This program can be distributed under the terms of the GNU GPLv3.
+ * This program can be distributed under the terms of the Apache License v2.0.
  * See the file LICENSE for details.
  **/
 
