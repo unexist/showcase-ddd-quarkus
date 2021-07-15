@@ -1,155 +1,233 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>quarkus-ddd-showcase - 0.1</title>
-    <style>
-        h1, h2, h3, h4, h5, h6 {
-            margin-bottom: 0.5rem;
-            font-weight: 400;
-            line-height: 1.5;
+    <meta charset="utf-8">
+    <title>unexist.dev</title>
+    <style type="text/css">
+        :root {
+            /* Colors */
+            --font-color: #fff;
+            --font-color2: #aaa;
+            --link-color: #8cf;
+            --highlight-color: #ff8000;
+            --border-color: #446979;
+            --top-color: #313536;
+            --bottom-color: #1D2021;
+            --h1-color: #888;
+            --h2-color: #777;
+            --h3-color: #666;
+            --h4-color: #d7ba7d;
+            --code-color: #d7ba7d;
+            --cite-color: #777;
+
+            /* Misc */
+            --margin: 10px;
+            --padding: 10px;
+            --radius: 8px;
+            --border: 1px solid var(--top-color);
         }
 
-        h1 {
-            font-size: 2.5rem;
+        * {
+            margin: 0px;
+            padding: 0px;
         }
 
-        h2 {
-            font-size: 2rem;
-        }
-
-        h3 {
-            font-size: 1.75rem;
-        }
-
-        h4 {
-            font-size: 1.5rem;
-        }
-
-        h5 {
-            font-size: 1.25rem;
-        }
-
-        h6 {
-            font-size: 1rem;
-        }
-
-        .lead {
-            font-weight: 300;
-            font-size: 2rem;
-        }
-
-        .banner {
-            font-size: 2.7rem;
-            margin: 0;
-            padding: 2rem 1rem;
-            background-color: #00A1E2;
-            color: white;
-        }
-
+        /* Layout */
         body {
-            margin: 0;
-            font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            background-color: var(--bottom-color);
+            color: var(--font-color);
+            font-family: HelveticaNeue,"Helvetica Neue",Helvetica,Arial,sans-serif;
         }
 
-        code {
-            font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            font-size: 87.5%;
-            color: #e83e8c;
-            word-break: break-word;
+        nav {
+            background-color: var(--bottom-color);
+            border-radius: var(--radius) var(--radius) 0px 0px;
+            font-size: 90%;
         }
 
-        .left-column {
-            padding: .75rem;
-            max-width: 75%;
-            min-width: 55%;
+        footer {
+            color: var(--font-color2);
+            background-color: var(--top-color);
+            border-left: var(--border);
+            border-right: var(--border);
+            border-bottom: var(--border);
+            border-radius: 0px 0px var(--radius) var(--radius);
+            font-size: 70%;
+            text-align: center;
         }
 
-        .right-column {
-            padding: .75rem;
-            max-width: 25%;
+        footer a:link, footer a:visited {
+            color: var(--font-color2);
+            text-decoration: underline;
         }
 
-        .container {
-            display: flex;
+        footer a:hover {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        #container {
             width: 100%;
         }
 
-        li {
-            margin: 0.75rem;
+        #split {
+            display: table;
+            padding-top: var(--padding);
+            border-left: var(--border);
+            border-right: var(--border);
         }
 
-        .right-section {
-            margin-left: 1rem;
-            padding-left: 0.5rem;
+        #content {
+            display: table-cell;
+            padding-right: var(--padding);
         }
 
-        .right-section h3 {
-            padding-top: 0;
-            font-weight: 200;
+        #content h1 {
+            text-decoration: none;
+            border-bottom: 1px solid var(--h1-color);
+            margin-bottom: 10px;
         }
 
-        .right-section ul {
-            border-left: 0.3rem solid #00A1E2;
-            list-style-type: none;
-            padding-left: 0;
+        #content h2 {
+            text-decoration: none;
+            border-bottom: 1px solid var(--h2-color);
+            margin-bottom: 10px;
         }
 
+        #sidebar a {
+            display: block;
+        }
+
+        #header {
+            background-color: var(--top-color);
+            width: 100%;
+        }
+
+        #headline, #split, nav, footer {
+            width: 70%;
+            margin: 0px auto;
+            padding: var(--padding);
+
+            /* Stupid hack */
+            min-width: 844px;
+        }
+
+        @media screen and (max-width: 899px) {
+            #headline, #split, nav, footer {
+                width: 100%;
+            }
+        }
+
+        #headline h1 {
+            display: inline-block;
+            text-decoration: none;
+            border-bottom: none;
+        }
+
+        #headline h2 {
+            display: inline-block;
+            padding-left: var(--padding);
+            border-bottom: none;
+        }
+
+        /* Text */
+        a:link, a:visited {
+            text-decoration: none;
+            color: var(--link-color);
+        }
+
+        a:hover {
+            color: var(--highlight-color);
+        }
+
+        h1 {
+            color: var(--h1-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--h1-color);
+        }
+
+        h2 {
+            color: var(--h2-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--h2-color);
+        }
+
+        h3 {
+            color: var(--h3-color);
+            text-decoration: underline;
+            display: inline;
+        }
+
+        h3, h4 {
+            padding-top: 10px;
+        }
+
+        h4 {
+            color: var(--h4-color);
+        }
+
+        .post-content li {
+            margin-left: 40px;
+            padding: 0px 0px var(--padding) 0px;
+            color: var(--font-color2);
+        }
     </style>
 </head>
 <body>
-
-<div class="banner lead">
-    Your new Cloud-Native application is ready!
-</div>
-
-<div class="container">
-    <div class="left-column">
-        <p class="lead"> Congratulations, you have created a new Quarkus application.</p>
-
-        <h2>Why do you see this?</h2>
-
-        <p>This page is served by Quarkus. The source is in
-            <code>src/main/resources/META-INF/resources/index.html</code>.</p>
-
-        <h2>What can I do from here?</h2>
-
-        <p>If not already done, run the application in <em>dev mode</em> using: <code>mvn compile quarkus:dev</code>.
-        </p>
-        <ul>
-            <li>Add REST resources, Servlets, functions and other services in <code>src/main/java</code>.</li>
-            <li>Your static assets are located in <code>src/main/resources/META-INF/resources</code>.</li>
-            <li>Configure your application in <code>src/main/resources/application.properties</code>.
-            </li>
-        </ul>
-
-        <h2>Do you like Quarkus?</h2>
-        <p>Go give it a star on <a href="https://github.com/quarkusio/quarkus">GitHub</a>.</p>
-
-        <h2>How do I get rid of this page?</h2>
-        <p>Just delete the <code>src/main/resources/META-INF/resources/index.html</code> file.</p>
-    </div>
-    <div class="right-column">
-        <div class="right-section">
-            <h3>Application</h3>
-            <ul>
-                <li>GroupId: dev.unexist.showcase</li>
-                <li>ArtifactId: quarkus-ddd-showcase</li>
-                <li>Version: 0.1</li>
-                <li>Quarkus Version: 1.13.0.Final</li>
-            </ul>
+<div id="container">
+    <div id="header">
+        <div id="headline">
+            <h1>unexist.dev</h1>
+            <h2></h2>
+            <h2></h2>
+            <p>Showcase for @project.artifactId@</p>
         </div>
-        <div class="right-section">
-            <h3>Next steps</h3>
-            <ul>
-                <li><a href="https://quarkus.io/guides/maven-tooling.html" target="_blank">Setup your IDE</a></li>
-                <li><a href="https://quarkus.io/guides/getting-started.html" target="_blank">Getting started</a></li>
-                <li><a href="https://quarkus.io" target="_blank">Quarkus Web Site</a></li>
-            </ul>
+        <nav>
+            <a href="/">Home</a>
+            <a href="https://unexist.dev">Projects</a>
+            <a href="https://hg.unexist.dev">Repositories</a>
+        </nav>
+    </div>
+    <div id="split">
+        <div id="content">
+            <div id="posts">
+                <h2>Information</h2>
+
+                <div class="post-content">
+                    <ul>
+                        <li>
+                            <h3>Group</h3>: @project.groupId@
+                        </li>
+                        <li>
+                            <h3>Artifact</h3>: @project.artifactId@
+                        </li>
+                        <li>
+                            <h3>Version</h3>: @project.version@
+                        </li>
+                        <li>
+                            <h3>Build</h3> on @timestamp@ by @hg.author@
+                        </li>
+                    </ul>
+                </div>
+
+                <h2>Links</h2>
+
+                <div class="post-content">
+                    <ul>
+                        <li><a href="/q/dev">Developer console</a></li>
+                        <li><a href="/q/swagger-ui">Swagger UI</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
+    <footer>
+        <a href="/feed.xml">RSS</a>
+        &middot;
+        <a href="https://github.com/unexist">unexist @ GitHub</a>
+        &middot;
+        <a href="https://twitter.com/chkappel">unexist @ Twitter</a>
+    </footer>
 </div>
-
-
 </body>
 </html>
