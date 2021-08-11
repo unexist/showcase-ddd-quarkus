@@ -22,8 +22,7 @@ public enum Status {
     /**
      * Check whether status is {@code FINISHED}
      *
-     * @return
-     *          Either {@code true} when the status is {@code FINISHED}; otherwise {@code false}
+     * @return Either {@code true} when the status is {@code FINISHED}; otherwise {@code false}
      **/
 
     boolean isFinished() {
@@ -33,8 +32,7 @@ public enum Status {
     /**
      * Check whether status is {@code UNFINISHED}
      *
-     * @return
-     *          Either {@code true} when the status is {@code UNFINISHED}; otherwise {@code false}
+     * @return Either {@code true} when the status is {@code UNFINISHED}; otherwise {@code false}
      **/
 
     boolean isNotFinished() {

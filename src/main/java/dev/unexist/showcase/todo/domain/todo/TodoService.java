@@ -28,10 +28,9 @@ public class TodoService {
     /**
      * Create new {@link Todo} entry and store it in repository
      *
-     * @param todoDto
-     *          A {@link TodoDTO} entry
-     * @return
-     *          Either {@code true} on success; otherwise {@code false}
+     * @param  todoDto  A {@link TodoDTO} entry
+     *
+     * @return Either {@code true} on success; otherwise {@code false}
      **/
 
     public boolean create(final TodoDTO todoDto) {
@@ -45,12 +44,10 @@ public class TodoService {
     /**
      * Update {@link Todo} at with given id
      *
-     * @param id
-     *          Id to update
-     * @param todoDto
-     *          Values for the entry
-     * @return
-     *          Either {@code true} on success; otherwise {@code false}
+     * @param  id       Id to update
+     * @param  todoDto  Values for the entry
+     *
+     * @return Either {@code true} on success; otherwise {@code false}
      **/
 
     public boolean update(final TodoIdentifier id, final TodoDTO todoDto) {
@@ -69,10 +66,9 @@ public class TodoService {
     /**
      * Delete {@link Todo} with given id
      *
-     * @param id
-     *          Id to delete
-     * @return
-     *          Either {@code true} on success; otherwise {@code false}
+     * @param  id  Id to delete
+     *
+     * @return Either {@code true} on success; otherwise {@code false}
      **/
 
     public boolean deleteById(final TodoIdentifier id) {
@@ -82,8 +78,7 @@ public class TodoService {
     /**
      * Get all {@link Todo} entries
      *
-     * @return
-     *          List of all {@link Todo}; might be empty
+     * @return List of all {@link Todo}; might be empty
      **/
 
     public List<Todo> getAll() {
@@ -93,10 +88,9 @@ public class TodoService {
     /**
      * Find {@link Todo} by given id
      *
-     * @param id
-     *          Id to look for
-     * @return
-     *          A {@link Optional} of the entry
+     * @param  id  Id to look for
+     *
+     * @return A {@link Optional} of the entry
      **/
 
     public Optional<Todo> findById(final TodoIdentifier id) {

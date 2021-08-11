@@ -22,10 +22,9 @@ public interface TodoRepository {
     /**
      * Add {@link Todo} entry to list
      *
-     * @param todo
-     *          {@link Todo} entry to add
-     * @return
-     *          Either {@code true} on success; otherwise {@code false}
+     * @param  todo  {@link Todo} entry to add
+     *
+     * @return Either {@code true} on success; otherwise {@code false}
      **/
 
     boolean add(Todo todo);
@@ -33,21 +32,19 @@ public interface TodoRepository {
     /**
      * Update {@link Todo} with given id
      *
-     * @param todo
-     *          A {@link Todo} to update
-     * @return
-     *          Either {@code true} on success; otherwise {@code false}
+     * @param  todo  A {@link Todo} to update
+     *
+     * @return Either {@code true} on success; otherwise {@code false}
      **/
 
     boolean update(Todo todo);
 
     /**
-     * Delete {@link Todo} with given {@link TodoIdentifier}
+     * Delete {@link Todo} with given id
      *
-     * @param id
-     *          {@link TodoIdentifier} to delete
-     * @return
-     *          Either {@code true} on success; otherwise {@code false}
+     * @param  id  Id to delete
+     *
+     * @return Either {@code true} on success; otherwise {@code false}
      **/
 
     boolean deleteById(TodoIdentifier id);
@@ -61,12 +58,11 @@ public interface TodoRepository {
     List<Todo> getAll();
 
     /**
-     * Find {@link Todo} by given {@link TodoIdentifier}
+     * Find {@link Todo} by given id
      *
-     * @param id
-     *          {@link TodoIdentifier} to find
-     * @return
-     *          A {@link Optional} with the result of the lookup
+     * @param  id  Id to find
+     *
+     * @return A {@link Optional} with the result of the lookup
      **/
 
     Optional<Todo> findById(TodoIdentifier id);

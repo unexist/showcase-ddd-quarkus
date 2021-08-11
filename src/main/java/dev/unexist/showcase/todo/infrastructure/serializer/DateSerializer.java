@@ -22,22 +22,20 @@ import java.time.format.DateTimeFormatter;
 
 @InfrastructureLayer
 public class DateSerializer extends JsonSerializer<LocalDate> {
+    public static final String PATTERN = "yyyy-MM-dd";
 
     /**
-     * Serialize data
+     * Serialize {@link LocalDate} to format
      *
-     * @param value
-     *          Value to serialize
-     * @param gen
-     *          Generate to use
-     * @param serializers
-     *          Serializer to use
+     * @param  value        Value to convert
+     * @param  gen          A {@link JsonGenerator}
+     * @param  serializers  A {@link SerializerProvider}
      * @throws IOException
      **/
 
     @Override
     public void serialize(LocalDate value, JsonGenerator gen,
                           SerializerProvider serializers) throws IOException {
-        gen.writeString(value.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        gen.writeString(value.format(DateTimeFormatter.ofPattern(PATTERN)));
     }
 }

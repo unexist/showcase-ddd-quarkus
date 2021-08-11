@@ -25,10 +25,9 @@ public class TodoDTOAssembler {
     /**
      * Create {@link TodoDTO} from given {@link Todo}
      *
-     * @param todo
-     *          A source {@ink Todo}
-     * @return
-     *          Newly created {@link TodoDTO}
+     * @param  todo  source {@ink Todo}
+     *
+     * @return Newly created {@link TodoDTO}
      **/
 
     public static TodoDTO fromTodoToDto(final Todo todo) {
@@ -50,10 +49,8 @@ public class TodoDTOAssembler {
     /**
      * Update given {@link Todo} with data from {@link TodoDTO}
      *
-     * @param todo
-     *          A {@link Todo} to update
-     * @param todoDto
-     *          A source {@link TodoDTO}
+     * @param  todo     A {@link Todo} to update
+     * @param  todoDto  A source {@link TodoDTO}
      **/
 
     public static void updateTodoFromDto(final Todo todo, final TodoDTO todoDto) {

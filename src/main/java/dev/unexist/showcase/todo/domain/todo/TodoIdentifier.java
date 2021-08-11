@@ -26,8 +26,7 @@ public class TodoIdentifier implements Identifier {
     /**
      * Constructor
      *
-     * @param id
-     *          Id for the entry
+     * @param  id  Id for the entry
      **/
 
     public TodoIdentifier(final String id) {
@@ -37,8 +36,7 @@ public class TodoIdentifier implements Identifier {
     /**
      * Set id of entry
      *
-     * @param id
-     *          Id for the entry
+     * @param  id  Id for the entry
      **/
 
     protected void setId(final String id) {
@@ -68,8 +66,7 @@ public class TodoIdentifier implements Identifier {
     /**
      * Create a new {@link TodoIdentifier}
      *
-     * @return
-     *          New {@link TodoIdentifier}
+     * @return New {@link TodoIdentifier}
      **/
 
     public static TodoIdentifier nextId() {

@@ -32,10 +32,8 @@ public class TimeWindow {
     /**
      * Constructor
      *
-     * @param start
-     *          Start date of the window
-     * @param due
-     *          End date of the window
+     * @param  start  Start date of the window
+     * @param  due    End date of the window
      **/
 
     TimeWindow(LocalDate start, LocalDate due) {
@@ -50,9 +48,8 @@ public class TimeWindow {
     /**
      * Get start date of the window
      *
-     * @return
-     *          Start date of the window
-     */
+     * @return Start date of the window
+     **/
 
     LocalDate getStart() {
         return start;
@@ -61,8 +58,7 @@ public class TimeWindow {
     /**
      * Set start date of the window
      *
-     * @param start
-     *          Start date of the window
+     * @param  start  Start date of the window
      **/
 
     protected void setStart(LocalDate start) {
@@ -72,8 +68,7 @@ public class TimeWindow {
     /**
      * Get due date of the window
      *
-     * @return
-     *          Due date of the window
+     * @return Due date of the window
      **/
 
     LocalDate getDue() {
@@ -83,8 +78,7 @@ public class TimeWindow {
     /**
      * Set due date of the window
      *
-     * @param due
-     *          Due date of the window
+     * @param  due  Due date of the window
      **/
 
     protected void setDue(LocalDate due) {

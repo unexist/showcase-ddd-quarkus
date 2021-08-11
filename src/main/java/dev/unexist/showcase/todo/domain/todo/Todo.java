@@ -26,8 +26,7 @@ public class Todo implements AggregateRoot<Todo, TodoIdentifier>, Identifiable<T
     /**
      * Constructor
      *
-     * @param id
-     *          Id of the entry
+     * @param  id  Id of the entry
      **/
 
     public Todo(final TodoIdentifier id) {
@@ -42,8 +41,7 @@ public class Todo implements AggregateRoot<Todo, TodoIdentifier>, Identifiable<T
     /**
      * Set id of the entry
      *
-     * @param id
-     *          Id of the entry
+     * @param  id  Id of the entry
      **/
 
     protected void setId(TodoIdentifier id) {
@@ -53,8 +51,7 @@ public class Todo implements AggregateRoot<Todo, TodoIdentifier>, Identifiable<T
     /**
      * Get description of the entry
      *
-     * @return
-     *          Get description of the entry
+     * @return Get description of the entry
      **/
 
     Description getDescription() {
@@ -64,8 +61,7 @@ public class Todo implements AggregateRoot<Todo, TodoIdentifier>, Identifiable<T
     /**
      * Set descroption of the entry
      *
-     * @param description
-     *          Description of the entry
+     * @param  description  Description of the entry
      **/
 
     void setDescription(Description description) {
@@ -76,8 +72,7 @@ public class Todo implements AggregateRoot<Todo, TodoIdentifier>, Identifiable<T
     /**
      * Get time window of the entry
      *
-     * @return
-     *          Time window of the entry
+     * @return Time window of the entry
      **/
 
     TimeWindow getTimeWindow() {
@@ -87,8 +82,7 @@ public class Todo implements AggregateRoot<Todo, TodoIdentifier>, Identifiable<T
     /**
      * Set time window of the entry
      *
-     * @param timeWindow
-     *          Time window of the entry
+     * @param  timeWindow  Time window of the entry
      **/
 
     void setTimeWindow(TimeWindow timeWindow) {
@@ -99,8 +93,7 @@ public class Todo implements AggregateRoot<Todo, TodoIdentifier>, Identifiable<T
     /**
      * Get status of the entry
      *
-     * @return
-     *          Status of the entry
+     * @return Status of the entry
      **/
 
     Status getStatus() {
@@ -110,8 +103,7 @@ public class Todo implements AggregateRoot<Todo, TodoIdentifier>, Identifiable<T
     /**
      * Set status of the entry
      *
-     * @param status
-     *          Status of the entry
+     * @param  status  Status of the entry
      **/
 
     void setStatus(Status status) {
