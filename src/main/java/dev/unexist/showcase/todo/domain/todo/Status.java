@@ -1,7 +1,7 @@
 /**
  * @package Quarkus-DDD-Showcase
  *
- * @file Status enum
+ * @file Status value object
  * @copyright 2020-2021 Christoph Kappel <christoph@unexist.dev>
  * @version $Id$
  *

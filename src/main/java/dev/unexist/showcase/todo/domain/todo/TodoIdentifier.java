@@ -1,7 +1,7 @@
 /**
  * @package Quarkus-DDD-Showcase
  *
- * @file DueDate class
+ * @file TodoIdentifier value object
  * @copyright 2020-2021 Christoph Kappel <christoph@unexist.dev>
  * @version $Id$
  *
