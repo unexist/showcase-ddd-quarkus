@@ -65,8 +65,12 @@ public class TodoResource {
     public Response create(@Valid final TodoDTO todoDto, @Context UriInfo uriInfo) {
         Response.ResponseBuilder response;
 
-        if (this.todoService.create(todoDto)) {
-            URI uri = uriInfo.getAbsolutePathBuilder().build();
+        Optional<TodoIdentifier> id = this.todoService.create(todoDto);
+
+        if (id.isPresent()) {
+            URI uri = uriInfo.getAbsolutePathBuilder()
+                    .path(id.toString())
+                    .build();
 
             response = Response.created(uri);
         } else {

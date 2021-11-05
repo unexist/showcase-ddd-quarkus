@@ -30,15 +30,15 @@ public class TodoService {
      *
      * @param  todoDto  A {@link TodoDTO} entry
      *
-     * @return Either {@code true} on success; otherwise {@code false}
+     * @return Either an Optional of {@link TodoIdentifier}
      **/
 
-    public boolean create(final TodoDTO todoDto) {
+    public Optional<TodoIdentifier> create(final TodoDTO todoDto) {
         Todo todo = new Todo(TodoIdentifier.nextId());
 
         TodoDTOAssembler.updateTodoFromDto(todo, todoDto);
 
-        return this.todoRepository.add(todo);
+        return Optional.ofNullable(this.todoRepository.add(todo) ? todo.getId() : null);
     }
 
     /**
