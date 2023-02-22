@@ -2,7 +2,7 @@
  * @package Quarkus-DDD-Showcase
  *
  * @file Stupid integration test
- * @copyright 2019-present Christoph Kappel <unexist@subforge.org>
+ * @copyright 2019-present Christoph Kappel <christoph@unexist.dev>
  * @version $Id$
  *
  * This program can be distributed under the terms of the Apache License v2.0.
